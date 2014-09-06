@@ -56,7 +56,7 @@ namespace UniversalAppSharpDX
 
             // Save the context instance
             this.deviceContext = this.device.ImmediateContext2;
-            
+
             // We have to take into account pixel scaling; Windows Phone 8.1 uses virtual resolutions smaller than the physical screen size.
             float pixelScale = Windows.Graphics.Display.DisplayInformation.GetForCurrentView().LogicalDpi / 96.0f;
 
@@ -113,12 +113,12 @@ namespace UniversalAppSharpDX
 
         private void CompositionTarget_Rendering(object sender, object e)
         {
-// Set the active back buffer and clear it.
-this.deviceContext.OutputMerger.SetRenderTargets(this.backBufferView);
-this.deviceContext.ClearRenderTargetView(this.backBufferView, Color.CornflowerBlue);
+            // Set the active back buffer and clear it.
+            this.deviceContext.OutputMerger.SetRenderTargets(this.backBufferView);
+            this.deviceContext.ClearRenderTargetView(this.backBufferView, Color.CornflowerBlue);
 
-// Tell the swap chain to present the buffer.
-this.swapChain.Present(1, DXGI.PresentFlags.None, new DXGI.PresentParameters());
+            // Tell the swap chain to present the buffer.
+            this.swapChain.Present(1, DXGI.PresentFlags.None, new DXGI.PresentParameters());
         }
     }
 }
