@@ -91,8 +91,10 @@ namespace UniversalAppSharpDX
                 using (DXGI.Factory3 dxgiFactory3 = dxgiDevice3.Adapter.GetParent<DXGI.Factory3>())
                 {
                     // Create the swap chain and get the highest version available.
-                    DXGI.SwapChain1 swapChain1 = new DXGI.SwapChain1(dxgiFactory3, this.device, ref swapChainDescription);
-                    this.swapChain = swapChain1.QueryInterface<DXGI.SwapChain2>();
+                    using (DXGI.SwapChain1 swapChain1 = new DXGI.SwapChain1(dxgiFactory3, this.device, ref swapChainDescription))
+                    {
+                        this.swapChain = swapChain1.QueryInterface<DXGI.SwapChain2>();
+                    }
                 }
             }
 
